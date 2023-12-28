@@ -14,6 +14,6 @@ export class Tool {
 	@Column()
 	description: string;
 
-	@Column()
-	tags: string;
+	@Column('text', { array: true })
+	tags: string[];
 }

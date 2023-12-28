@@ -1,4 +1,4 @@
-import { IsString, Length } from 'class-validator';
+import { IsNotEmpty, IsString, Length } from 'class-validator';
 
 export class CreateToolDto {
 	@IsString({ message: 'Title must be a string' })
@@ -15,7 +15,8 @@ export class CreateToolDto {
 	})
 	description: string;
 
-	@IsString({ message: 'Tags must be a string' })
+	@IsString({ message: 'Tags must be a string', each: true })
 	@Length(3, 50, { message: 'Tags must be between 3 and 50 characters' })
-	tags: string;
+	@IsNotEmpty()
+	tags: string[];
 }
