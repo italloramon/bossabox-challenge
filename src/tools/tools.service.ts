@@ -23,6 +23,13 @@ export class ToolsService {
 		return this.repository.findOne({ where: { id } });
 	}
 
+	findByTag(tag: string) {
+		return this.repository
+			.createQueryBuilder('tool')
+			.where(':tag = ANY(tool.tags)', { tag })
+			.getMany();
+	}
+
 	update(id: number, updateToolDto: UpdateToolDto) {
 		return this.repository.update({ id }, updateToolDto);
 	}
