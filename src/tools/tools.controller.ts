@@ -11,8 +11,10 @@ import {
 import { ToolsService } from './tools.service';
 import { CreateToolDto } from './dto/create-tool.dto';
 import { UpdateToolDto } from './dto/update-tool.dto';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @Controller('tools')
+@ApiTags('tools')
 export class ToolsController {
 	constructor(private readonly toolsService: ToolsService) {}
 
@@ -22,6 +24,7 @@ export class ToolsController {
 	}
 
 	@Get()
+	@ApiQuery({ name: 'tag', required: false })
 	findAll(@Query('tag') tag: string) {
 		return tag ? this.toolsService.findByTag(tag) : this.toolsService.findAll();
 	}
