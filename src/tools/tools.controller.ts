@@ -12,6 +12,7 @@ import { ToolsService } from './tools.service';
 import { CreateToolDto } from './dto/create-tool.dto';
 import { UpdateToolDto } from './dto/update-tool.dto';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
+import { Public } from 'src/auth/decorator/public.decorator';
 
 @Controller('tools')
 @ApiTags('tools')
@@ -24,6 +25,7 @@ export class ToolsController {
 	}
 
 	@Get()
+	@Public()
 	@ApiQuery({ name: 'tag', required: false })
 	findAll(@Query('tag') tag: string) {
 		return tag ? this.toolsService.findByTag(tag) : this.toolsService.findAll();

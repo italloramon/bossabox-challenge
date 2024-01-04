@@ -1,0 +1,6 @@
+{
+    "editor.codeActionsOnSave": {
+			"source.fixAll": "always"
+		},
+		"workbench.iconTheme": "vs-seti"
+}
