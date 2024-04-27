@@ -18,7 +18,7 @@ class ToolsController < ApplicationController
 
   def update
     tool = Tool.find(params[:id])
-    tool.update!(tool)
+    tool.update!(tool_params)
     render json: tool
   end
 
