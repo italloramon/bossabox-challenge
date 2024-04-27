@@ -4,10 +4,10 @@ one:
   title: MyString
   link: MyString
   description: MyString
-  tags: MyString
+  tags: [tag1, tag2]
 
 two:
   title: MyString
   link: MyString
   description: MyString
-  tags: MyString
+  tags: [tag1, tag2]
