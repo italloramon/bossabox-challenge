@@ -1,6 +1,10 @@
 class ToolsController < ApplicationController
   def index
-    render json: Tool.all
+    if params[:tag]
+      render json: Tool.where("tags @> ARRAY[?]::varchar[]", params[:tag])
+    else
+      render json: Tool.all
+    end
   end
 
   def show
