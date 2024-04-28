@@ -27,8 +27,12 @@ class ToolsController < ApplicationController
   end
 
   def destroy
-    Tool.find(params[:id]).destroy
-    head :no_content
+    begin
+      Tool.find(params[:id]).destroy
+      head :no_content
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "Tool not found" }, status: :not_found
+    end
   end
 
   private
